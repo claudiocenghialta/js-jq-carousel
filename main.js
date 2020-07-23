@@ -10,18 +10,22 @@ $(document).ready(
              per passare alla img precedente*/
             prevImg
         )
+        $('.nav i').click(
+            /*al click sul nav devo rendere attivi 
+            quel nav e la relativa immagine*/
+            clickNav
+        )
     }
     
 );
 
 
-//FUNZIONI
+//***************FUNZIONI*****************
 
 //funzione immagine successiva
 function nextImg() {
     var imgActive = $('.images img.active');
     var navActive = $('.nav i.active');
-    console.log(imgActive, navActive);
     imgActive.removeClass('active');
     navActive.removeClass('active');
     if (imgActive.hasClass('last')) {
@@ -37,7 +41,6 @@ function nextImg() {
 function prevImg() {
     var imgActive = $('.images img.active');
     var navActive = $('.nav i.active');
-    console.log(imgActive), navActive;
     imgActive.removeClass('active');
     navActive.removeClass('active');
     if (imgActive.hasClass('first')) {
@@ -46,5 +49,24 @@ function prevImg() {
     } else {
         imgActive.prev().addClass('active');
         navActive.prev().addClass('active');
+    }
+}
+
+//funzione per click su nav
+function clickNav () {
+    var navSelected = $(this);
+    //metto classe active al selezionato e la tolgo ai fratelli
+    if (navSelected.hasClass('active')==false){
+        navSelected.siblings().removeClass('active');
+        navSelected.addClass('active');
+    }
+    //trovo la posizione del nav selezionato 
+    var indiceNav = navSelected.index()
+    console.log(indiceNav);
+    //metto classe active all'immagine nella stessa posizione del nav e la tolgo alle altre
+    var imgSelected = $('.images img').eq(indiceNav);
+    if (imgSelected.hasClass('active')==false){
+        imgSelected.siblings().removeClass('active');
+        imgSelected.addClass('active');
     }
 }
