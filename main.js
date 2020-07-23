@@ -62,7 +62,8 @@ function clickNav () {
     }
     //trovo la posizione del nav selezionato 
     var indiceNav = navSelected.index()
-    //metto classe active all'immagine nella stessa posizione del nav e la tolgo alle altre
+    /*metto classe active all'immagine nella stessa posizione del nav
+     e la tolgo alle altre*/
     var imgSelected = $('.images img').eq(indiceNav);
     if (imgSelected.hasClass('active')==false){
         imgSelected.siblings().removeClass('active');
