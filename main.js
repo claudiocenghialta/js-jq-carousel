@@ -4,19 +4,25 @@ $(document).ready(
             /*al click sulla freccia next eseguo funzione
              per passare alla img successiva*/
             nextImg
-        )
+        );
         $('.prev').click(
             /*al click sulla freccia prev eseguo funzione
              per passare alla img precedente*/
             prevImg
-        )
+        );
         $('.nav i').click(
             /*al click sul nav devo rendere attivi 
             quel nav e la relativa immagine*/
             clickNav
-        )
+        );
+        $(document).keydown(function(event){
+            if (event.which == 39||event.keyCode == 39) {
+                nextImg()
+            } else if (event.which == 37||event.keyCode == 37) {
+                prevImg()
+            }
+        });
     }
-    
 );
 
 
